@@ -40,3 +40,15 @@ jobs:
         
       - name: Run type check
         run: npx tsc --noEmit
+
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: |
+          npx
+          npx prettier . --write
+      - uses: autofix-ci/action@v1
+        with:
+          commit-message: "Apply Prettier format"
